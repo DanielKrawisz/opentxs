@@ -5,6 +5,8 @@
 
 #pragma once
 
+#include "opentxs/crypto/library/Trezor.hpp"
+
 namespace opentxs::crypto::implementation
 {
 class Trezor final : virtual public crypto::Trezor,
