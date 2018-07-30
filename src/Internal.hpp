@@ -317,9 +317,7 @@ class LowLevelKeyGenerator;
 class OpenSSL;
 #endif
 class StorageConfig;
-#if OT_CRYPTO_USING_TREZOR
-class TrezorCrypto;
-#endif
+class StorageMultiplex;
 }  // namespace opentxs
 
 #include "Factory.hpp"
