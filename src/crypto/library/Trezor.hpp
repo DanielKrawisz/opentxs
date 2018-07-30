@@ -34,7 +34,6 @@ public:
         const EcdsaCurve& curve,
         const OTPassword& seed,
         proto::HDPath& path) const override;
-    bool RandomKeypair(OTPassword& privateKey, Data& publicKey) const override;
     std::string SeedToFingerprint(
         const EcdsaCurve& curve,
         const OTPassword& seed) const override;
@@ -98,6 +97,8 @@ private:
         OTPassword& secret) const override;
     bool ScalarBaseMultiply(const OTPassword& privateKey, Data& publicKey)
         const override;
+    bool RandomKeypair(OTPassword& privateKey, Data& publicKey) const override;
+    bool ValidPrivateKey(const OTPassword& key) const;
 #endif
 
     const api::Crypto& crypto_;
@@ -125,7 +126,6 @@ private:
         const HDNode& node,
         const DerivationMode privateVersion) const;
     std::unique_ptr<HDNode> InstantiateHDNode(const EcdsaCurve& curve) const;
-    bool ValidPrivateKey(const OTPassword& key) const;
 #endif
 
     Trezor(const api::Crypto& crypto);
