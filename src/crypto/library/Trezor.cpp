@@ -82,24 +82,15 @@ crypto::Trezor* Factory::Trezor(const api::Crypto& crypto)
 
 namespace opentxs::crypto::implementation
 {
-Trezor::Trezor(const api::Crypto& crypto)
+
+
+Trezor::Trezor(const api::Crypto& crypto) : crypto_(crypto)
 #if OT_CRYPTO_WITH_BIP32
-    : Bip32()
+    , Bip32()
 #endif
 #if OT_CRYPTO_SUPPORTED_KEY_SECP256K1
-#if OT_CRYPTO_WITH_BIP32
-    ,
-#else
-    :
+    , EcdsaProvider()
 #endif
-    EcdsaProvider()
-#endif
-#if OT_CRYPTO_WITH_BIP32 || OT_CRYPTO_SUPPORTED_KEY_SECP256K1
-    ,
-#else
-    :
-#endif
-    crypto_(crypto)
 {
 #if OT_CRYPTO_WITH_BIP32
     secp256k1_ = get_curve_by_name(CurveName(EcdsaCurve::SECP256K1).c_str());
