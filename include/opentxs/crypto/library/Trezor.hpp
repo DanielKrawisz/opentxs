@@ -39,13 +39,6 @@ class Trezor : virtual public EncodingProvider,
 #endif
 {
 public:
-#if OT_CRYPTO_SUPPORTED_KEY_SECP256K1
-    EXPORT virtual bool ECDH(
-        const Data& publicKey,
-        const OTPassword& privateKey,
-        OTPassword& secret) const = 0;
-#endif
-
     EXPORT virtual ~Trezor() = default;
 
 protected:
